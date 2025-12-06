@@ -44,6 +44,22 @@ function hacer_login($email, $pass)
 
 	return true;
 }
+
+// Obtener todos los Usuarios de la base de datos
+function obtenerUsuarios()
+{
+    $bd = conectarBS();
+
+    $sql = "SELECT id, nombre, email, rol, fecha_nacimiento, ciudad, biografia, foto_perfil
+            FROM usuarios
+            ORDER BY nombre ASC";
+
+    $stmt = $bd->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // Obtener Post Usuario
 function obtenerPostsUsuario($usuarioId)
 {
@@ -64,23 +80,21 @@ function obtenerPostsUsuario($usuarioId)
 // Publicar POST
 function crearPost($contenido, $nombreImagen = null, $nombreArchivo = null)
 {
-	if (empty($_SESSION['usuario']['id'])) {
-		return false; // No hay usuario en sesión
-	}
-
 	$bd = conectarBS();
 
-	$sql = "INSERT INTO posts (usuarioid, contenido, imagen, archivoadjunto)
+	$sql = "INSERT INTO posts (usuario_id, contenido, imagen, archivo_adjunto)
             VALUES (:usuarioid, :contenido, :imagen, :archivoadjunto)";
 
 	$stmt = $bd->prepare($sql);
-	$stmt->bindValue(':usuarioid', $_SESSION['usuario']['id'], PDO::PARAM_INT);
-	$stmt->bindValue(':contenido', $contenido, PDO::PARAM_STR);
-	$stmt->bindValue(':imagen', $nombreImagen, PDO::PARAM_STR);
-	$stmt->bindValue(':archivoadjunto', $nombreArchivo, PDO::PARAM_STR);
+	$stmt->bindValue(':usuarioid', $_SESSION['usuario']['id']);
+	$stmt->bindValue(':contenido', $contenido);
+	$stmt->bindValue(':imagen', $nombreImagen);
+	$stmt->bindValue(':archivoadjunto', $nombreArchivo);
 
 	return $stmt->execute();
 }
+
+// Seguir Usuario
 function seguirUsuario($seguidor, $seguido) {
     global $conexion;
 
@@ -93,6 +107,7 @@ function seguirUsuario($seguidor, $seguido) {
     return $stmt->execute();
 }
 
+// Comprobar si ya Sigue
 function yaSigue($seguidor, $seguido) {
     global $conexion;
 
@@ -161,4 +176,3 @@ function dejarDeSeguir($seguidor, $seguido) {
     return $stmt->execute();
 }
 ?>
-
