@@ -12,6 +12,7 @@ function conectarBS()
 			$bd_config["clave"]
 		);
 		$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$bd->exec("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
 	}
 	return $bd;
 }
@@ -93,6 +94,21 @@ function crearPost($contenido, $nombreImagen = null, $nombreArchivo = null)
 
 	return $stmt->execute();
 }
+
+// Buscar usuario / usuarios
+function buscarUsuariosPorNombre($termino)
+{
+    $bd = conectarBS();
+    $sql = "SELECT id, nombre, email, rol, fecha_nacimiento, ciudad, biografia, foto_perfil
+            FROM usuarios
+            WHERE nombre LIKE :nombre
+            ORDER BY nombre ASC";
+    $stmt = $bd->prepare($sql);
+    $stmt->execute([':nombre' => $termino . '%']);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// CAMBIAR FUNCIONES
 
 // Seguir Usuario
 function seguirUsuario($seguidor, $seguido) {
@@ -176,3 +192,4 @@ function dejarDeSeguir($seguidor, $seguido) {
     return $stmt->execute();
 }
 ?>
+
