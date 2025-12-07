@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #212121;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #d3d3d3;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #171717;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.4);
+    padding: 1em 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2em;
+    list-style: none;
+}
+
+.nav-menu li a {
+    color: #d3d3d3;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-menu li a:hover {
+    color: white;
+}
+
+/* Contenedor principal */
+
+.container {
+    max-width: 1000px;
+    margin: 2em auto;
+    padding: 0 2em;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #333;
+    font-size: 0.95em;
+    outline: none;
+}
+
+.search-box::placeholder {
+    color: #777;
+}
+
+/* Cabecera de la página de usuarios */
+
+.usuarios-header {
+    background-color: #171717;
+    border-radius: 25px;
+    padding: 2em;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.4);
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+}
+
+.usuarios-header h1 {
+    color: white;
+    font-size: 1.8em;
+}
+
+.usuarios-header p {
+    color: #d3d3d3;
+}
+
+/* Grid de usuarios */
+
+.usuarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.5em;
+}
+
+/* Tarjeta de usuario */
+
+.usuario-card {
+    background-color: #171717;
+    border-radius: 20px;
+    padding: 1.2em;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.usuario-card:hover {
+    border: 1px solid #090979;
+    transform: translateY(-2px);
+}
+
+/* Avatar circular */
+
+.usuario-avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+/* Info del usuario */
+
+.usuario-info strong {
+    color: white;
+    display: block;
+    margin-bottom: 0.2em;
+}
+
+.usuario-ciudad {
+    color: #d3d3d3;
+    font-size: 0.85em;
+    display: block;
+}
+
+.usuario-bio {
+    margin-top: 0.4em;
+    font-size: 0.8em;
+    color: #aaaaaa;
+    max-height: 3.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1em;
+    }
+    
+    .usuarios-header {
+        padding: 1.5em;
+    }
+
+    .usuarios-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
