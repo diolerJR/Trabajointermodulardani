@@ -1,0 +1,95 @@
+/* ---- Contenido sugerido para un nuevo archivo registro.css (Si quieres separarlo) ---- */
+
+body {
+    background: #212121;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2em;
+    background-color: #171717;
+    border-radius: 25px;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.4);
+    width: 340px;
+}
+
+.form:hover {
+    border: 1px solid black;
+}
+
+#heading {
+    text-align: center;
+    margin: 2em;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.form .btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 2.5em;
+}
+
+/* Solo se necesita button3 para el formulario de registro */
+.button3 {
+    margin-bottom: 0;
+    /* Lo ajustamos para que no tenga el margen excesivo del final */
+    padding: 0.5em;
+    width: 100%;
+    /* Hacemos que ocupe todo el ancho del contenedor */
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+    background-color: #252525;
+    color: white;
+    cursor: pointer;
+}
+
+.button3:hover {
+    background-color: black;
+    color: white;
+}
+
+/* ... y el resto de clases si las necesitas para futuros errores, etc. */
+/* Asegúrate de incluir .error-message si vas a mostrar errores */
+.error-message {
+    background-color: #b71c1c;
+    color: #fff;
+    padding: 0.8em;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
+}
